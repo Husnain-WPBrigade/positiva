@@ -1783,8 +1783,10 @@ img {
 }
 
 .contact-wrapper {
-  display: flex;
   position: relative;
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  gap: 20px;
 }
 
 .footer-content-wrapper {
@@ -1803,13 +1805,8 @@ img {
   width: 20%;
 }
 
-.contact-body {
-  margin-left: 20px;
-}
-
 .contact-header {
   width: 34px;
-  margin-top: 7px;
 }
 
 .contact-header-width-lg {
@@ -1898,10 +1895,11 @@ img {
 @media screen and (max-width: 880px) {
   .footer-content-wrapper {
     flex-direction: column;
+    padding: 15px 0 30px 0;
   }
   .footer-card-container {
     width: 100%;
-    padding: 20px;
+    padding: 0px 0 20px 0;
   }
 
   .footer-info-wrapper {
@@ -1911,6 +1909,14 @@ img {
 }
 
 @media screen and (max-width: 640px) {
+  .footer-content-wrapper {
+    flex-direction: column;
+  }
+
+  .footer-info-wrapper {
+    padding: 0;
+  }
+
   .footer-card-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1936,27 +1942,6 @@ img {
 .logo-section-content {
   display: flex;
   align-items: center;
-}
-
-.logo-wrapper {
-  display: flex;
-}
-
-.badge-logo-wrapper {
-  margin-left: 23px;
-}
-
-.footer-logo:not(:last-child) {
-  margin-right: 25px;
-}
-
-.blank-logo-box {
-  margin: 0;
-  margin-left: 11px;
-}
-
-.footer-badge-logo:not(:last-child) {
-  margin-right: 14px;
 }
 
 .logo-slider-slide.swiper-slide {
@@ -2050,73 +2035,6 @@ img {
 
   .logo-section {
     padding: 17px 0;
-  }
-}
-
-@media screen and (max-width: 930px) {
-  .logo-section-content {
-    flex-direction: column;
-  }
-
-  .logo-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .footer-logo:not(:last-child) {
-    margin-right: 10px;
-    margin-bottom: 15px;
-  }
-
-  .logo-wrapper:not(:last-child) {
-    margin-bottom: 10px;
-  }
-
-  .badge-logo-wrapper {
-    margin-right: 0px;
-    margin-left: 0px;
-
-    flex-direction: row;
-  }
-
-  .blank-logo-box {
-    margin: 0;
-    flex-direction: row;
-    align-items: baseline;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  .logo-section-content {
-    flex-direction: column;
-  }
-
-  .logo-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .footer-logo:not(:last-child) {
-    margin-right: 10px;
-    margin-bottom: 15px;
-  }
-
-  .logo-wrapper:not(:last-child) {
-    margin-bottom: 10px;
-  }
-
-  .badge-logo-wrapper {
-    margin-right: 0px;
-    margin-left: 0px;
-
-    flex-direction: row;
-  }
-
-  .blank-logo-box {
-    margin: 0;
-    flex-direction: row;
-    align-items: baseline;
   }
 }
 

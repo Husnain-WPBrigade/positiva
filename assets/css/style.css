@@ -1619,10 +1619,6 @@ img {
   .select-form-wrapper {
     width: 30.3%;
   }
-
-  .main-body {
-    padding: 0 10px;
-  }
 }
 
 @media screen and (max-width: 825px) {
@@ -1771,7 +1767,7 @@ img {
 
   .newsletter-side-content {
     width: 100%;
-    padding: 0;
+    padding: 0 0 15px;
   }
 }
 

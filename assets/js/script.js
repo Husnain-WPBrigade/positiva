@@ -1,30 +1,28 @@
-var swiper = new Swiper(".hero-card-slider", {
+// ------------------------------ Feature - Card-Slider ---------------------
+var swiper = new Swiper(".feature-card-slider", {
   slidesPerView: 4,
   spaceBetween: 12,
-  slidesPerGroup: 4,
+  slidesPerGroup: 1,
   loop: true,
   loopFillGroupWithBlank: true,
   pagination: {
-    el: ".swiper-pagination",
+    el: ".feature-card-pagination",
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".feature-card-next",
+    prevEl: ".feature-card-prev",
   },
 
   breakpoints: {
-    // when window width is >= 320px
     200: {
       slidesPerView: 1,
       spaceBetween: 12,
     },
-    // when window width is >= 480px
-    420: {
+    480: {
       slidesPerView: 2,
       spaceBetween: 12,
     },
-    // when window width is >= 640px
     640: {
       slidesPerView: 3,
       spaceBetween: 12,
@@ -42,12 +40,12 @@ var swiper = new Swiper(".hero-slider", {
   spaceBetween: 0,
   loop: true,
   pagination: {
-    el: ".swiper-pagination",
+    el: ".hero-slider-pagination",
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".hero-slider-next",
+    prevEl: ".hero-slider-prev",
   },
 });
 
@@ -68,17 +66,10 @@ var swiper = new Swiper(".showcase-card-slider", {
     prevEl: ".swiper-button-prev",
   },
   breakpoints: {
-    // when window width is >= 320px
     200: {
       slidesPerView: 1,
       spaceBetween: 12,
     },
-    // when window width is >= 480px
-    // 420: {
-    //   slidesPerView: 2,
-    //   spaceBetween: 12,
-    // },
-    // when window width is >= 640px
     440: {
       slidesPerView: 2,
       spaceBetween: 0,
@@ -132,9 +123,12 @@ const eventBodyOne = document.querySelector(".event-form-body-1");
 const eventBodyTwo = document.querySelector(".event-form-body-2");
 const menuIcon = document.querySelector(".menu-icon");
 const navbarMenu = document.querySelector(".navbar-container");
+const searchInput = document.querySelector(".input-search");
+const searchBtn = document.querySelector(".search-btn");
+const dropdownBtn = document.querySelector(".dropdown-nav");
+const dropdwonContent = document.querySelector(".dropdown-content");
 
 btnTwo.addEventListener("click", () => {
-  console.log("worked");
   btnOne.classList.remove("btn-active");
   btnTwo.classList.add("btn-active");
   formOne.classList.remove("active");
@@ -162,13 +156,74 @@ eventBtnTwo.addEventListener("click", () => {
   eventBodyTwo.classList.add("event-active");
 });
 
-menuIcon.addEventListener("click", (e) => {
-  e.preventDefault();
+menuIcon.addEventListener("click", () => {
   menuIcon.classList.toggle("menu-active");
-  navbarMenu.classList.toggle("mobile-menu-hide");
+  navbarMenu.classList.toggle("navbar-active");
+
+  if (
+    navbarMenu.classList.contains("navbar-active") &&
+    window.matchMedia("(max-width: 840px)")
+  ) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 });
 
-// $('.menu-icon').on('click', function (e) {
-//   e.preventDefault);
-//   $(this).toggle('menu-active')
-// })
+function submitSearch(e) {
+  e.preventDefault();
+  searchInput.focus();
+  searchInput.value = "";
+}
+
+searchBtn.addEventListener("click", submitSearch);
+
+dropdownBtn.addEventListener("click", function () {
+  dropdownBtn.classList.toggle("dropdown-active");
+});
+
+// -----------------------Logo Slider.
+const logoSliderBreakpoint = window.matchMedia(`(min-width: 768px)`);
+let logoSlider;
+
+const logoSliderBreakChecker = function () {
+  if (logoSliderBreakpoint.matches === true) {
+    if (logoSlider !== undefined) logoSlider.destroy(true, true);
+
+    return;
+  } else if (logoSliderBreakpoint.matches === false) {
+    return enableLogoSlider();
+  }
+};
+
+const enableLogoSlider = function () {
+  logoSlider = new Swiper(".logo-slider", {
+    slidesPerView: 2,
+    spaceBetween: 30,
+    slidesPerGroup: 2,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".logo-slider-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".logo-slider-next",
+      prevEl: ".logo-slider-prev",
+    },
+
+    breakpoints: {
+      767: {
+        slidesPerGroup: 8,
+        slidesPerView: 8,
+      },
+    },
+  });
+};
+
+logoSliderBreakpoint.addListener(logoSliderBreakChecker);
+logoSliderBreakChecker();

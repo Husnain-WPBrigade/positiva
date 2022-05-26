@@ -2052,30 +2052,43 @@ img {
   color: var(--color-white);
   font-family: "Roboto", sans-serif;
   display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-weight: 400;
   font-size: 12px;
-  letter-spacing: 0.7px;
-}
-
-.footer-list:nth-child(2) {
-  margin-top: 15px;
-}
-
-.footer-list-item {
   letter-spacing: 0.2px;
+}
+
+.footer-list li a {
+  text-decoration: none;
+  color: var(--color-white);
+  display: inline-block;
+  padding: 2px;
+  transition: 0.4s;
+}
+
+.footer-list li a:hover {
+  color: var(--color-secondary);
+}
+
+.footer-list:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .footer-positiva-logo {
   margin-left: 42px;
+  transition: 0.4s;
 }
 
-.footer-list-item:not(:last-child) {
-  margin-right: 10px;
+.footer-positiva-logo:hover {
+  opacity: 0.7;
+  transform: scale(1.03);
 }
 
 @media screen and (max-width: 640px) {
   .footer-links-section {
-    padding: 30px 10px;
+    padding: 30px 0px;
   }
   .footer-content {
     flex-direction: column-reverse;

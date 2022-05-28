@@ -160,10 +160,7 @@ menuIcon.addEventListener("click", () => {
   menuIcon.classList.toggle("menu-active");
   navbarMenu.classList.toggle("navbar-active");
 
-  if (
-    navbarMenu.classList.contains("navbar-active") &&
-    window.matchMedia("(max-width: 840px)")
-  ) {
+  if (navbarMenu.classList.contains("navbar-active")) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
